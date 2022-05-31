@@ -16,13 +16,15 @@
   <meta name="author" content="leegaojun">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="编程语言在面试过程中，面试官要么直接问语法，要么让用一种语言解决一个问题。在cpp中，一般考察编程语言的方式有以下三种：  直接询问对cpp概念的理解：如cpp中的关键字，或者sizeof函数在各种情况下的值； 分析写好的代码 定义一个类型或实现类型中的成员函数  #1赋值运算符函数 题目：如下为类型CMyString的声明，请为该类型添加赋值运算符函数。  12345678class CMySt">
+<meta property="og:type" content="article">
 <meta property="og:title" content="【剑指offer-2】基础知识">
 <meta property="og:url" content="http://example.com/2022/05/28/%E3%80%90%E5%89%91%E6%8C%87offer-2%E3%80%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="lee&#39;s blog">
+<meta property="og:description" content="编程语言在面试过程中，面试官要么直接问语法，要么让用一种语言解决一个问题。在cpp中，一般考察编程语言的方式有以下三种：  直接询问对cpp概念的理解：如cpp中的关键字，或者sizeof函数在各种情况下的值； 分析写好的代码 定义一个类型或实现类型中的成员函数  #1赋值运算符函数 题目：如下为类型CMyString的声明，请为该类型添加赋值运算符函数。  12345678class CMySt">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-28T02:20:26.000Z">
-<meta property="article:modified_time" content="2022-05-28T02:21:13.267Z">
+<meta property="article:modified_time" content="2022-05-31T07:51:38.256Z">
 <meta property="article:author" content="leegaojun">
 <meta property="article:tag" content="刷题">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,7 +71,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gf5plF2qP2l1Apoo0feuK5wV-gzGzoHsz","app_key":"3Rv9sCbgdFwS6PSeppMCKk7D","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"468d8a75076ded9ce77c2225438faa4d","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gf5plF2qP2l1Apoo0feuK5wV-gzGzoHsz","app_key":"3Rv9sCbgdFwS6PSeppMCKk7D","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -217,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.6k 字
         
       </span>
     
@@ -228,7 +230,7 @@
         
         
         
-          1 分钟
+          14 分钟
         
       </span>
     
@@ -278,7 +280,45 @@
             
             <div class="markdown-body">
               
-              
+              <h1 id="编程语言"><a href="#编程语言" class="headerlink" title="编程语言"></a>编程语言</h1><p>在面试过程中，面试官要么直接问语法，要么让用一种语言解决一个问题。在cpp中，一般考察编程语言的方式有以下三种：</p>
+<ul>
+<li>直接询问对cpp概念的理解：如cpp中的关键字，或者sizeof函数在各种情况下的值；</li>
+<li>分析写好的代码</li>
+<li>定义一个类型或实现类型中的成员函数</li>
+</ul>
+<h2 id="1赋值运算符函数"><a href="#1赋值运算符函数" class="headerlink" title="#1赋值运算符函数"></a>#1赋值运算符函数</h2><blockquote>
+<p>题目：如下为类型CMyString的声明，请为该类型添加赋值运算符函数。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CMyString</span> &#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-built_in">CMyString</span>(<span class="hljs-type">char</span>* pData=<span class="hljs-literal">nullptr</span>);<br>        <span class="hljs-built_in">CMyString</span>(<span class="hljs-type">const</span> CMyString&amp; str);<br>        ~<span class="hljs-built_in">CMyString</span>(<span class="hljs-type">void</span>);<br>    <span class="hljs-keyword">private</span>:<br>        <span class="hljs-type">char</span>* m_pData;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>在设计赋值运算符函数时需要考虑下面四个问题：</p>
+<ul>
+<li>返回值的类型声明与返回值：返回值的类型声明应该是该类型的引用，返回值应该是返回的实例自身的引用(*this)。考虑连续赋值的情况，如果函数返回值为空，不是返回的引用将不能连续赋值；</li>
+<li>传入的参数类型：传入的参数应该是常量引用，因为如果传入的参数不是引用而是实例的话，那么从形参到实参会调用一次复制构造函数，一般参数传递时使用引用来代替实例和指针，可以避免无谓的消耗，提高代码的效率，另外由于我们在函数中不用改变传入实例的状态，所以使用const；</li>
+<li>内存管理：是否释放实例自身已有的内存；</li>
+<li>特殊输入判断：判断传入的参数和当前的实例(*this)是不是同一个实例；</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">CMyString&amp; <span class="hljs-title">CMystring</span><span class="hljs-params">(<span class="hljs-type">const</span> CMyString &amp;str)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (*<span class="hljs-keyword">this</span> == &amp;str) <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br><br>    <span class="hljs-keyword">delete</span> []m_pData;<br>    m_pData = <span class="hljs-literal">nullptr</span>;<br><br>    m_pData= <span class="hljs-keyword">new</span> <span class="hljs-type">char</span>[<span class="hljs-built_in">strlen</span>(str.m_pData) + <span class="hljs-number">1</span>]<br>    <span class="hljs-built_in">strcpy</span>(m_pData, str.m_pData);<br><br>    <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="cpp基础知识"><a href="#cpp基础知识" class="headerlink" title="cpp基础知识"></a>cpp基础知识</h3><blockquote>
+<p><strong>引用</strong>：引用变量是一个别名，也就是说，它是某个已存在变量的另一个名字。一旦把引用初始化为某个变量，就可以使用该引用名称或变量名称来指向变量。我们一般在类型名后添加<code>&amp;</code>来表示。</p>
+</blockquote>
+<blockquote>
+<p><strong>引用与指针的区别</strong>：不存在空引用。引用必须连接到一块合法的内存。一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。引用必须在创建时被初始化。指针可以在任何时间被初始化。</p>
+</blockquote>
+<blockquote>
+<p><strong>this指针</strong>：在 C++ 中，每一个对象都能通过 this 指针来访问自己的地址。this 指针是所有成员函数的隐含参数。因此，在成员函数内部，它可以用来指向调用对象。友元函数没有 this 指针，因为友元不是类的成员。只有成员函数才有 this 指针。</p>
+</blockquote>
+<blockquote>
+<p><strong>复制构造函数</strong>：拷贝构造函数是一种特殊的构造函数，它在创建对象时，是使用同一类中之前创建的对象来初始化新创建的对象。拷贝构造函数通常用于：通过使用另一个同类型的对象来初始化新创建的对象。复制对象把它作为参数传递给函数。复制对象，并从函数返回这个对象。</p>
+</blockquote>
+<blockquote>
+<p><strong>形参与实参的区别</strong>：形参出现在函数定义的地方，多个形参之间以逗号分隔，形参规定了一个函数所接受数据的类型和数量。实参出现在函数调用的地方，实参的数量与类型与形参一样，实参用于初始化形参。当形参是引用类型时，对应的实参被引用传递，引用形参是对应的实参的别名。当实参的值被拷贝给形参时，形参和实参是两个相互独立的对象，对应的实参被值传递。C++中，建议使用引用类型的形参替代指针，因为使用引用，形式上更简单，无须额外声明指针变量，也避免了拷贝指针的值。如果函数无须改变引用  形参的值，最好将其声明为const引用。</p>
+</blockquote>
+<blockquote>
+<p><strong>指针运算符</strong>：C++ 提供了两种指针运算符，一种是取地址运算符<code>&amp;</code>，一种是间接寻址运算符<code>*</code>。<code>&amp;</code>是一元运算符，返回操作数的内存地址。第二个运算符是间接寻址运算符<code>*</code>，它是<code>&amp;</code>运算符的补充。<code>*</code>是一元运算符，返回操作数所指定地址的变量的值。</p>
+</blockquote>
+<hr>
+
               
             </div>
             <hr/>
@@ -383,32 +423,6 @@
             
   <article id="comments" lazyload>
     
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#comments', function() {
-      var light = 'github-light';
-      var dark = 'github-dark';
-      var schema = document.documentElement.getAttribute('data-user-color-scheme');
-      if (schema === 'dark') {
-        schema = dark;
-      } else {
-        schema = light;
-      }
-      window.UtterancesThemeLight = light;
-      window.UtterancesThemeDark = dark;
-      var s = document.createElement('script');
-      s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.setAttribute('repo', 'justpi/comment_utterances');
-      s.setAttribute('issue-term', 'title');
-      
-      s.setAttribute('label', 'utterances');
-      
-      s.setAttribute('theme', schema);
-      s.setAttribute('crossorigin', 'anonymous');
-      document.getElementById('comments').appendChild(s);
-    })
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
 
   </article>
 
@@ -573,6 +587,19 @@
 
 
 
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?468d8a75076ded9ce77c2225438faa4d";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
   
 
   
