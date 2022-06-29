@@ -16,13 +16,15 @@
   <meta name="author" content="leegaojun">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="面向对象编程设计模式  继承 复合 委托   复合设计模式 复合的情况示例如下：一般情况下低层容器的功能很强大，基于此此层容器构造的类如下 1234567891011121314template &lt;class T, class Sequence &#x3D; deque&lt;T&gt;&gt;class queue &amp;#123;...protected:    Sequence c; &#x2F;&#x2F;低层容器">
+<meta property="og:type" content="article">
 <meta property="og:title" content="【cpp语言】基础-4">
 <meta property="og:url" content="http://example.com/2022/06/23/%E3%80%90cpp%E8%AF%AD%E8%A8%80%E3%80%91%E5%9F%BA%E7%A1%80-4/index.html">
 <meta property="og:site_name" content="lee&#39;s blog">
+<meta property="og:description" content="面向对象编程设计模式  继承 复合 委托   复合设计模式 复合的情况示例如下：一般情况下低层容器的功能很强大，基于此此层容器构造的类如下 1234567891011121314template &lt;class T, class Sequence &#x3D; deque&lt;T&gt;&gt;class queue &amp;#123;...protected:    Sequence c; &#x2F;&#x2F;低层容器">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-23T12:43:37.000Z">
-<meta property="article:modified_time" content="2022-06-23T12:44:53.118Z">
+<meta property="article:modified_time" content="2022-06-25T09:14:17.093Z">
 <meta property="article:author" content="leegaojun">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.6k 字
         
       </span>
     
@@ -233,7 +235,7 @@
         
         
         
-          1 分钟
+          14 分钟
         
       </span>
     
@@ -283,7 +285,34 @@
             
             <div class="markdown-body">
               
-              <h1 id=""><a class="markdownIt-Anchor" href="#"></a> </h1>
+              <h1 id="面向对象编程设计模式"><a class="markdownIt-Anchor" href="#面向对象编程设计模式"></a> 面向对象编程设计模式</h1>
+<ul>
+<li>继承</li>
+<li>复合</li>
+<li>委托</li>
+</ul>
+<h2 id="复合设计模式"><a class="markdownIt-Anchor" href="#复合设计模式"></a> 复合设计模式</h2>
+<p>复合的情况示例如下：一般情况下低层容器的功能很强大，基于此此层容器构造的类如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>, <span class="hljs-keyword">class</span> <span class="hljs-title class_">Sequence</span> = deque&lt;T&gt;&gt;<br><span class="hljs-keyword">class</span> queue &#123;<br>...<br><span class="hljs-keyword">protected</span>:<br>    Sequence c; <span class="hljs-comment">//低层容器</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">//以下函数均使用c中的函数完成</span><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123; <span class="hljs-keyword">return</span> c.<span class="hljs-built_in">empty</span>();&#125;;<br>    <span class="hljs-function">size_type <span class="hljs-title">size</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123; <span class="hljs-keyword">return</span> c.<span class="hljs-built_in">size</span>(); &#125;;<br>    <span class="hljs-function">reference <span class="hljs-title">front</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-keyword">return</span> c.<span class="hljs-built_in">front</span>();&#125;;<br>    <span class="hljs-function">reference <span class="hljs-title">back</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> c.<span class="hljs-built_in">back</span>(); &#125;;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">const</span> value_type&amp; x)</span> </span>&#123; c.<span class="hljs-built_in">push_back</span>(x); &#125;;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123; c.<span class="hljs-built_in">pop_front</span>(); &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>从内存角度：其大小=各个低层容器+自己的数据大小；</p>
+<h3 id="复合关系下的构造与析构"><a class="markdownIt-Anchor" href="#复合关系下的构造与析构"></a> 复合关系下的构造与析构</h3>
+<p><strong>构造函数</strong>：container的构造函数首先调用内部component的默认构造函数，然后再执行自己的构造函数；</p>
+<p><strong>析构函数</strong>：container首先调用自己的析构函数，然后再调用内部各component的默认析构函数。</p>
+<h2 id="委托"><a class="markdownIt-Anchor" href="#委托"></a> 委托</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">StringRep</span>;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">String</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">String</span>();   <span class="hljs-comment">//构造函数1</span><br>    <span class="hljs-built_in">String</span>(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* s);  <span class="hljs-comment">//构造函数2</span><br>    <span class="hljs-built_in">String</span>(<span class="hljs-type">const</span> String&amp; s);    <span class="hljs-comment">//拷贝构造</span><br>    String &amp;<span class="hljs-keyword">operator</span> = (<span class="hljs-type">const</span> String&amp; s);   <span class="hljs-comment">////拷贝赋值</span><br>    ~<span class="hljs-built_in">String</span>();  <span class="hljs-comment">//析构函数</span><br>...<br><span class="hljs-keyword">private</span>:<br>    StringRep* rep; <span class="hljs-comment">//指针指向一个叫做StringRep的对象 《pimpl设计模式》Hand/Body</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>此StringRep对象实现如下所示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;String.hpp&quot;</span></span><br><span class="hljs-keyword">namespace</span> &#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title class_">StringRep</span> &#123;<br>    <span class="hljs-keyword">friend</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">String</span>;<br>        <span class="hljs-built_in">StringRep</span>(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* s);<br>        ~<span class="hljs-built_in">StringRep</span>();<br>        <span class="hljs-type">int</span> count;<br>        <span class="hljs-type">char</span>* rep;<br>&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>container可以在任意时间将数据委托给这个对象（上面的示例中是StringRep），让这个对象处理数据。container和里面的对象寿命是不一致的。</p>
+<h2 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h2>
+<p>继承语法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">_LIST_node_base</span><br>&#123;<br>    _LIST_node_base* _M_next;<br>    _LIST_node_base* _M_prev;<br>&#125;;<br><br><span class="hljs-keyword">template</span>&lt;<span class="hljs-keyword">typename</span> -Tp&gt;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">_List_node</span><br>    :<span class="hljs-keyword">public</span> _LIST_node_base <span class="hljs-comment">//继承的语法</span><br>&#123;<br>    _Tp_M_data;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>父类的数据完全派生类被继承下来，其构造函数与析构函数应该与复合中一致的。</p>
+<h3 id="继承与虚函数"><a class="markdownIt-Anchor" href="#继承与虚函数"></a> 继承与虚函数</h3>
+<p><strong>非虚函数</strong>：不希望派生类重新定义；</p>
+<p><strong>虚函数</strong>：在成员函数前加上<code>virtual</code>关键字，希望派生类重新定义，但其有默认的定义；</p>
+<p><strong>纯虚函数</strong>：交给派生类重新定义的，没有默认定义；</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Shape</span> &#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>=<span class="hljs-number">0</span>;    <span class="hljs-comment">//纯虚函数</span><br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">error</span> <span class="hljs-params">(<span class="hljs-type">const</span> std::string&amp; msg)</span></span>;    <span class="hljs-comment">//虚函数</span><br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">objectID</span><span class="hljs-params">()</span> <span class="hljs-type">const</span></span>;   <span class="hljs-comment">//非虚函数</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="委托继承"><a class="markdownIt-Anchor" href="#委托继承"></a> 委托+继承</h3>
 
               
             </div>
@@ -342,6 +371,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/06/27/%E3%80%90cpp%E8%AF%AD%E8%A8%80%E3%80%91%E5%9F%BA%E7%A1%80-5/" title="【cpp语言】基础-5">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【cpp语言】基础-5</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

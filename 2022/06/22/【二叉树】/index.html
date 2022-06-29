@@ -16,13 +16,15 @@
   <meta name="author" content="leegaojun">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="遍历  排序 主要掌握归并排序和快速排序  快速排序 快速排序框架： 12345678910void quickSort(vector&lt;int&gt;&amp; nums, int lo, int hi) &amp;#123;    if (lo &gt; hi) return ;    &#x2F;&#x2F; 快排处理：    &#x2F;&#x2F; 对 nums[lo..hi] 进⾏切分    &#x2F;&#x2F; 使得 nums[lo..p-">
+<meta property="og:type" content="article">
 <meta property="og:title" content="【二叉树】">
 <meta property="og:url" content="http://example.com/2022/06/22/%E3%80%90%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%91/index.html">
 <meta property="og:site_name" content="lee&#39;s blog">
+<meta property="og:description" content="遍历  排序 主要掌握归并排序和快速排序  快速排序 快速排序框架： 12345678910void quickSort(vector&lt;int&gt;&amp; nums, int lo, int hi) &amp;#123;    if (lo &gt; hi) return ;    &#x2F;&#x2F; 快排处理：    &#x2F;&#x2F; 对 nums[lo..hi] 进⾏切分    &#x2F;&#x2F; 使得 nums[lo..p-">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-22T03:11:39.000Z">
-<meta property="article:modified_time" content="2022-06-22T03:11:39.965Z">
+<meta property="article:modified_time" content="2022-06-29T02:34:18.959Z">
 <meta property="article:author" content="leegaojun">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          undefined 字
         
       </span>
     
@@ -233,7 +235,7 @@
         
         
         
-          1 分钟
+          NaN 分钟
         
       </span>
     
@@ -283,7 +285,15 @@
             
             <div class="markdown-body">
               
-              
+              <h1 id="遍历"><a class="markdownIt-Anchor" href="#遍历"></a> 遍历</h1>
+<h1 id="排序"><a class="markdownIt-Anchor" href="#排序"></a> 排序</h1>
+<p>主要掌握归并排序和快速排序</p>
+<h2 id="快速排序"><a class="markdownIt-Anchor" href="#快速排序"></a> 快速排序</h2>
+<p>快速排序框架：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quickSort</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (lo &gt; hi) <span class="keyword">return</span> ;</span><br><span class="line">    <span class="comment">// 快排处理：</span></span><br><span class="line">    <span class="comment">// 对 nums[lo..hi] 进⾏切分</span></span><br><span class="line">    <span class="comment">// 使得 nums[lo..p-1] &lt;= nums[p] &lt; nums[p+1..hi]</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> p = <span class="built_in">partition</span>(nums, lo, hi);</span><br><span class="line">    <span class="built_in">quickSort</span>(nums, lo, p<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">quickSort</span>(nums, p+<span class="number">1</span>, hi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现快排的框架还是在前序遍历的基础进行的部分改动，其构造过程就是一个构造二叉搜索树的过程，这个构造过程可能会出现构造出来的二叉搜索树是极不平衡的情况，为避免这种情况我们引入一些随机性，在排序前对整个数组执行<code>shuffle</code>打乱排序或是在<code>patition</code>函数中随机选择数组元素作为分界点。完整的快速排序代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">QuickSort</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">sortArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">shuffle</span>(nums);</span><br><span class="line">        <span class="built_in">sort</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>() <span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">sort</span><span class="params">(vecotr&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lo &gt;= hi) <span class="keyword">return</span> ;</span><br><span class="line">        <span class="type">int</span> p = <span class="built_in">partition</span>(nums, lo, hi);</span><br><span class="line">        <span class="built_in">sort</span>(nums, lo, p<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">sort</span>(nums, p+<span class="number">1</span>, hi);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">partition</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> pivot = nums[lo];   <span class="comment">//选择第一个元素作为判定元素</span></span><br><span class="line">        <span class="comment">// 选择i&lt;= pivot &lt;j</span></span><br><span class="line">        <span class="type">int</span> i = lo + <span class="number">1</span>, j = hi;</span><br><span class="line">         <span class="comment">// 当 i &gt; j 时结束循环，以保证区间 [lo, hi] 都被覆盖</span></span><br><span class="line">        <span class="keyword">while</span> (i &lt;= j) &#123;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; hi &amp;&amp; nums[i] &lt;= pivot) i++; <span class="comment">// 此 while 结束时恰好 nums[i] &gt; pivot</span></span><br><span class="line">            <span class="keyword">while</span> (j &gt; lo &amp;&amp; nums[j] &lt; pivot&gt;) j--; <span class="comment">// 此 while 结束时恰好 nums[j] &lt;= pivot</span></span><br><span class="line">            <span class="comment">// 此时 [lo, i) &lt;= pivot &amp;&amp; (j, hi] &gt; pivot</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= j) <span class="keyword">break</span>;</span><br><span class="line">            <span class="built_in">swap</span>(nums, i, j);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将 pivot 放到合适的位置，即 pivot 左边元素较小，右边元素较大</span></span><br><span class="line">        <span class="built_in">swap</span>(nums, lo, j);</span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> i, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> temp = nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">shuffle</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> hi = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>() - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="type">int</span> randint = <span class="built_in">rand</span>()% hi;</span><br><span class="line">            <span class="built_in">swap</span>(nums, i, randint);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
               
             </div>
             <hr/>
