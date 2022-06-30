@@ -60,7 +60,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"468d8a75076ded9ce77c2225438faa4d","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gf5plF2qP2l1Apoo0feuK5wV-gzGzoHsz","app_key":"3Rv9sCbgdFwS6PSeppMCKk7D","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"468d8a75076ded9ce77c2225438faa4d","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"gf5plF2qP2l1Apoo0feuK5wV-gzGzoHsz","app_key":"3Rv9sCbgdFwS6PSeppMCKk7D","server_url":"https://gf5plf2q.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -220,6 +220,74 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/06/30/%E3%80%90TVM-01%E3%80%91-%E6%95%B4%E4%BD%93%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5/" target="_self">
+          【TVM-01】-整体设计理念
+        </a>
+      </h1>
+
+      <a class="index-excerpt" href="/2022/06/30/%E3%80%90TVM-01%E3%80%91-%E6%95%B4%E4%BD%93%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5/" target="_self">
+        <div>
+          
+          这是深度学习编译器的学习开篇，我打算从tvm这个开源的深度学习编译器开始，了解深度学习编译器的具体构造与源码分析，具体将采取自顶向下的探索思路进行学习。首先是TVM的整体设计理念，我们从陈天奇大佬的论文（TVM: An Automated End-to-End Optimizing Compiler for Deep Learning(OSDI 2018)）开始tvm的学习。  摘要 TVM是一种
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-30 16:36" pubdate>
+              2022-06-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%BC%96%E8%AF%91%E5%99%A8/" class="category-chain-item">深度学习编译器</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%BC%96%E8%AF%91%E5%99%A8/tvm/" class="category-chain-item">tvm</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%BA%E6%96%87%E7%A0%94%E8%AF%BB/">#论文研读</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -518,39 +586,6 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/06/22/%E3%80%90%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%91/" target="_self">
-          【二叉树】
-        </a>
-      </h1>
-
-      <a class="index-excerpt" href="/2022/06/22/%E3%80%90%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%91/" target="_self">
-        <div>
-          
-          遍历  排序 主要掌握归并排序和快速排序  快速排序 快速排序框架： 12345678910void quickSort(vector&lt;int&gt;&amp; nums, int lo, int hi) &amp;#123;    if (lo &gt; hi) return ;    &#x2F;&#x2F; 快排处理：    &#x2F;&#x2F; 对 nums[lo..hi] 进⾏切分    &#x2F;&#x2F; 使得 nums[lo..p-
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-22 11:11" pubdate>
-              2022-06-22
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -615,20 +650,21 @@
 
   
     
-      <span id="busuanzi_container_site_pv" style="display: none">
+      <span id="leancloud-site-pv-container" style="display: none">
         总访客量
-        <span id="busuanzi_value_site_pv"></span>
+        <span id="leancloud-site-pv"></span>
         次
       </span>
     
     
-      <span id="busuanzi_container_site_uv" style="display: none">
+      <span id="leancloud-site-uv-container" style="display: none">
         总访客数
-        <span id="busuanzi_value_site_uv"></span>
+        <span id="leancloud-site-uv"></span>
         人
       </span>
     
     
+
   
 </div>
 
@@ -717,8 +753,6 @@
 
 
   <script  src="/js/local-search.js" ></script>
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
